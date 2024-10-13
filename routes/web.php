@@ -59,9 +59,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/pembelian', PembelianController::class)
             ->except('create');
 
-        Route::get('/pembelian_detail/{id}/data', [PembelianDetailController::class, 'data'])->name('pembelian_detail.data');
-        Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
-        Route::resource('/pembelian_detail', PembelianDetailController::class)
+        Route::get('/pembelian-detail/{id}/data', [PembelianDetailController::class, 'data'])->name('pembelian-detail.data');
+        Route::get('/pembelian-detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian-detail.load_form');
+        Route::resource('/pembelian-detail', PembelianDetailController::class)
             ->except('create', 'show', 'edit');
 
         Route::get('/penjualan/data', [PenjualanController::class, 'data'])->name('penjualan.data');
@@ -95,7 +95,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
         Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
     });
- 
+
     Route::group(['middleware' => 'level:1,2'], function () {
         Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');
         Route::post('/profil', [UserController::class, 'updateProfil'])->name('user.update_profil');
